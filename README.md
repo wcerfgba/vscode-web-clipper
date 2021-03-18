@@ -2,13 +2,15 @@
 
 Clip web pages into Markdown, similar to Evernote or OneNote.
 
+Forked from [jsartelle/vscode-web-clipper](https://github.com/jsartelle/vscode-web-clipper).
+
 ## Features
 
 Clip the contents of a web page into a Markdown document using the `Web Clipper: Clip Web Page` command.
 
 ![Screenshot](./screenshot.png)
 
-You can also open VS Code and clip a page using the following URI format: `vscode://jsartelle.web-clipper/clip?url={URL}`
+You can also open VS Code and clip a page using the following URI format: `vscode://wcerfgba.web-clipper/clip?url={URL}`
 
 The extension uses the [Mercury parser](https://github.com/postlight/mercury-parser) to extract the main content from a page. The HTML to Markdown conversion is handled by [Turndown](https://github.com/domchristie/turndown).
 

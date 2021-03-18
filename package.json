@@ -2,11 +2,12 @@
 	"name": "web-clipper",
 	"displayName": "Web Clipper",
 	"description": "Clip web pages into Markdown",
-	"version": "1.1.0",
-	"publisher": "jsartelle",
+	"version": "1.0.0",
+	"publisher": "wcerfgba",
+	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jsartelle/vscode-web-clipper"
+		"url": "https://github.com/wcerfgba/vscode-web-clipper"
 	},
 	"engines": {
 		"vscode": "^1.44.0"

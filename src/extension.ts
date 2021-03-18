@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
 				if (params.has('url')) {
 					clipPageAtUrl(params.get('url') as string);
 				} else {
-					vscode.window.showErrorMessage('Please provide a URL in the query string (ex. vscode://jsartelle.web-clipper/clip?url=URL).');
+					vscode.window.showErrorMessage('Please provide a URL in the query string (ex. vscode://wcerfgba.web-clipper/clip?url=URL).');
 				}
 			}
 		}
