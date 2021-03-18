@@ -17,6 +17,7 @@
 	],
 	"activationEvents": [
 		"onCommand:webClipper.clipWebPage",
+		"onCommand:webClipper.clipInline",
 		"onUri"
 	],
 	"main": "./out/extension.js",
@@ -25,6 +26,10 @@
 			{
 				"command": "webClipper.clipWebPage",
 				"title": "Web Clipper: Clip Web Page"
+			},
+			{
+				"command": "webClipper.clipInline",
+				"title": "Web Clipper: Clip Web Page Inline"
 			}
 		],
 		"configuration": {
@@ -41,6 +46,11 @@
 					"default": "# ${result.title}\n#### ${result.author ? `by ${result.author}, ` : ''}[${result.domain}](${result.url})${result.date_published ? ` ▪ ${new Date(result.date_published).toLocaleString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'})}` : ''}\n\n${markdown}\n\n---\n\nClipped on ${new Date().toLocaleString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'})}",
 					"markdownDescription": "A custom template that the results will be interpolated into. Use ${result} for the Mercury result object and ${markdown} for the converted Markdown.  \nA list of Mercury result properties can be found [here](https://github.com/postlight/mercury-parser#usage).  \nEdit this setting in the JSON settings editor to show line breaks properly."
 				},
+				"webClipper.inlineTemplate": {
+					"type": "string",
+					"default": "[${result.title}](${result.url})",
+					"markdownDescription": "A custom template for inline clipping. Use ${result} for the Mercury result object and ${markdown} for the converted Markdown.  \nA list of Mercury result properties can be found [here](https://github.com/postlight/mercury-parser#usage).  \nEdit this setting in the JSON settings editor to show line breaks properly."
+				},
 				"webClipper.turndownOptions": {
 					"type": "object",
 					"default": {},
@@ -50,7 +60,7 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
+		"vscode:prepublish": "npm run compile && npm prune --production",
 		"compile": "tsc -p ./",
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
@@ -58,22 +68,26 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.44.0",
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^7.0.2",
 		"@types/node": "^13.11.0",
-		"eslint": "^6.8.0",
-		"@typescript-eslint/parser": "^2.26.0",
+		"@types/vscode": "^1.44.0",
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
+		"@typescript-eslint/parser": "^2.26.0",
+		"bufferutil": "^4.0.3",
+		"canvas": "^2.7.0",
+		"eslint": "^6.8.0",
 		"glob": "^7.1.6",
 		"mocha": "^7.1.1",
 		"typescript": "^3.8.3",
+		"utf-8-validate": "^5.0.4",
 		"vscode-test": "^1.3.0"
 	},
 	"dependencies": {
 		"@postlight/mercury-parser": "^2.2.0",
 		"@types/postlight__mercury-parser": "^2.2.2",
 		"@types/turndown": "^5.0.0",
+		"http-headers": "3.0.2",
 		"turndown": "^6.0.0"
 	}
 }
